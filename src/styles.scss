@@ -4,27 +4,164 @@ body {
     margin: 0px;
 }
 
-@import '~@angular/material/theming';
-// Plus imports for other components in your app.
+section {
+    padding: 15px;
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+    .inline {
+        display: inline-block;
+        width:33%;
+    }
+}
+
+@import '~@angular/material/theming';
+
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue.
 $candy-app-primary: mat-palette($mat-indigo);
 $candy-app-accent:  mat-palette($mat-amber, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
 $candy-app-warn:    mat-palette($mat-red);
 
-// Create the theme object (a Sass map containing all of the palettes).
 $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include angular-material-theme($candy-app-theme);
+
+
+@font-face {
+font-family: 'weathericons';
+src: url('./fonts/weathericons-regular-webfont.eot');
+src: url('./fonts/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'), url('./fonts/weathericons-regular-webfont.woff') format('woff'), url('./fonts/weathericons-regular-webfont.ttf') format('truetype'), url('./fonts/weathericons-regular-webfont.svg#weathericons-regular-webfontRg') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+.wi {
+display: inline-block;
+font-family: 'weathericons';
+font-style: normal;
+font-weight: normal;
+line-height: 1;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+/* -----Thunder----- */
+
+    .wi-icon-200::before,
+    .wi-icon-201::before,
+    .wi-icon-210::before,
+    .wi-icon-211::before,
+    .wi-icon-212::before,
+    .wi-icon-221::before,
+    .wi-icon-230::before,
+    .wi-icon-231::before,
+    .wi-icon-232::before  {
+        content: "\f01d";
+    }
+
+/* -----Sun----- */
+
+    .wi-icon-800::before {
+        content: "\f00d";
+    }
+
+    .wi-icon-801::before {
+        content: "\f00c";
+    }
+
+/* -----Drizzle----- */
+    .wi-icon-300::before,
+    .wi-icon-301::before,
+    .wi-icon-302::before,
+    .wi-icon-310::before,
+    .wi-icon-311::before,
+    .wi-icon-312::before {
+        content: "\f017";
+    }
+
+    .wi-icon-313::before,
+    .wi-icon-314::before,
+    .wi-icon-321::before  {
+        content: "\f017";
+    }
+
+/* -----Hail----- */
+
+    .wi-icon-906::before {
+        content: "\f015";
+    }
+
+/* -----Showers----- */
+    .wi-icon-500::before,
+    .wi-icon-521::before,
+    .wi-icon-522::before,
+    .wi-icon-531::before  {
+        content: "\f01a";
+    }
+
+/* -----Rainy----- */
+
+    .wi-icon-501::before,
+    .wi-icon-502::before,
+    .wi-icon-503::before,
+    .wi-icon-511::before,
+    .wi-icon-520::before {
+        content: "\f019";
+    }
+
+/* -----Snowy----- */
+
+    .wi-icon-600::before,
+    .wi-icon-601::before,
+    .wi-icon-611::before,
+    .wi-icon-612::before,
+    .wi-icon-615::before,
+    .wi-icon-616::before,
+    .wi-icon-620::before,
+    .wi-icon-621::before,
+    .wi-icon-622::before  {
+        content: "\f064";
+    }
+
+/* -----Frosty----- */
+
+    .wi-icon-903::before {
+        content: "\f076";
+    }
+
+/* -----Windy----- */
+
+    .wi-icon-905::before  {
+        content: "\f011";
+    }
+
+/* -----WindyRain----- */
+
+    .wi-icon-504::before {
+        content: "\f018";
+    }
+
+/* -----WindySnow----- */
+
+    .wi-icon-602::before {
+        content: "\f064";
+    }
+
+/* -----Sleet----- */
+
+    .wi-icon-611::before  {
+    content: "\f0b5";
+    }
+
+/* -----Mist----- */
+
+    .wi-icon-701:before  {
+        content: "\f014";
+    }
+
+/* -----Cloud----- */
+
+    .wi-icon-802::before,
+    .wi-icon-803::before,
+    .wi-icon-804::before {
+        content: "\f011";
+    }

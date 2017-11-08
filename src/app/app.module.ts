@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule, MatFormFieldModule, MatAutocompleteModule, 
-  MatInputModule, MatSelectModule, MatProgressBarModule } from '@angular/material';
+  MatInputModule, MatSelectModule, MatProgressBarModule, MatCardModule,
+  MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AutocompleteCitiesComponent } from './autocomplete-cities/autocomplete-cities.component';
@@ -26,13 +29,17 @@ import { ProgressBarService } from './progressbar/progressbar.service';
     BrowserAnimationsModule,
     CommonModule,
     FormsModule,
+    HttpModule,
+    HttpClientModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatAutocompleteModule,
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [ProgressBarService],
   bootstrap: [AppComponent]

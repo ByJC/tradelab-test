@@ -1,3 +1,10 @@
-<p>
-  {{city.name}} - {{city.id}}
-</p>
+<mat-card>
+  <mat-card-title>
+    {{city.name}} - {{city.id}}
+  </mat-card-title>
+  <mat-card-content *ngFor="let weather of city.weather">
+    <p>{{weather.main}} - <i class="wi wi-icon-{{weather.id}}"></i></p>
+    <p>{{weather.description}}</p>
+    <p>{{weather.icon}}</p>
+  </mat-card-content>
+</mat-card>

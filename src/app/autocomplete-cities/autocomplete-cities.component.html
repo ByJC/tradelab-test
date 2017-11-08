@@ -1,5 +1,11 @@
-<select [formControl]="myControl">
-  <option *ngFor="let city of cities" [value]="city">
-    {{ city.nm }}
-  </option>
-</select>
+<mat-form-field>
+  <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let city of filteredOptions | async" [value]="city.nm">
+      {{ city.nm }}
+    </mat-option>
+  </mat-autocomplete>
+
+</mat-form-field>
+<button mat-raised-button (click)="submit()" color="accent">Submit</button>
