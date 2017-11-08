@@ -49,6 +49,7 @@ export class AutocompleteCitiesComponent {
       console.log(current);
       console.log(forecast);
       this.pbService.hide();
+      this.cService.updateWeather(current, forecast);
     });
 
   }
