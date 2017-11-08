@@ -1,8 +1,8 @@
 <mat-toolbar>
-    {{city.name}} - {{city.dt | date:'fullDate'}}
+    {{city?.name}} - {{city?.dt * 1000 | date:'fullDate'}}
   </mat-toolbar>
 <mat-card>
-  <mat-card-content *ngFor="let weather of city.weather">
+  <mat-card-content *ngFor="let weather of city?.weather">
     <p>{{weather.main}} - <i class="wi wi-icon-{{weather.id}}"></i></p>
     <p>{{weather.description}}</p>
     <p>{{weather.icon}}</p>

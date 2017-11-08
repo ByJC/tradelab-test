@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { CitiesService } from './cities/cities.service';
 
 @Component({
@@ -7,17 +8,14 @@ import { CitiesService } from './cities/cities.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+  currentCityWeather : Observable<any>;
+  forecastCityWeather : any;
 
   constructor(private cService: CitiesService) { }
 
   ngOnInit() {
-    this.cService
-      .currentWeather
-      .subscribe(weather => { console.log(weather); });
-
-    this.cService
-      .forecastWeather
-      .subscribe(weather => { console.log(weather); });
+    this.currentCityWeather = this.cService.currentWeather;
+    this.cService.forecastWeather
+      .subscribe(weather => this.forecastCityWeather = weather);
   }
 }

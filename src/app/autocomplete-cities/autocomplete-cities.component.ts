@@ -12,12 +12,12 @@ import { cities } from '../cities/cities-fr';
 import { ProgressBarService } from '../progressbar/progressbar.service';
 import { CitiesService } from '../cities/cities.service';
 
-
 @Component({
   selector: 'autocomplete-cities',
   templateUrl: 'autocomplete-cities.component.html',
   styleUrls: ['autocomplete-cities.component.scss']
 })
+
 export class AutocompleteCitiesComponent {
 
   myControl: FormControl = new FormControl();
@@ -30,24 +30,25 @@ export class AutocompleteCitiesComponent {
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
-      .startWith(null)
+      .startWith(this.cities[0])
       .debounceTime(200)
       .map(val => val ? this.filter(val) : this.cities.slice());
+
+    this.submit(this.cities[0].nm);
   }
 
   filter(name: string) {
     return this.cities.filter(city => city.nm.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
-  submit() {
+  submit(city) {
+    const citySend = city ? city : this.myControl.value;
     this.pbService.show();
     Observable.forkJoin([
-        this.cService.getCurrent(this.myControl.value),
-        this.cService.getForecast(this.myControl.value),
+        this.cService.getCurrent(citySend),
+        this.cService.getForecast(citySend),
     ])
     .subscribe(([current,forecast]) => {
-      console.log(current);
-      console.log(forecast);
       this.pbService.hide();
       this.cService.updateWeather(current, forecast);
     });

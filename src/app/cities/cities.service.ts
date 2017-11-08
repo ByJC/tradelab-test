@@ -1,17 +1,17 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 
 @Injectable ()
 export class CitiesService {
 
-    subjectCurrentWeather = new BehaviorSubject<any>(false);
+    subjectCurrentWeather = new ReplaySubject<any>();
     currentWeather = this.subjectCurrentWeather
                     .asObservable()
                     .do(currentCity => console.log('new current weather', currentCity));
                     
-    subjectForecastWeather = new BehaviorSubject<any>(false);
+    subjectForecastWeather = new ReplaySubject<any>();
     forecastWeather = this.subjectForecastWeather
                     .asObservable()
                     .do(forecastCity => console.log('new forecast weather', forecastCity));
@@ -30,9 +30,7 @@ export class CitiesService {
     }
     getForecast(city) {
         return this.http
-                .get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=baae20ca430564fec195985afb9eb4e1`)
+                .get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=baae20ca430564fec195985afb9eb4e1`)
                 .map(res => res.json());
     }
-
-    
 }

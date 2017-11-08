@@ -1,18 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
-  <span>Tradelab Test</span>
+  <span style="flex:1">Tradelab Test</span>
   <autocomplete-cities></autocomplete-cities>
 </mat-toolbar>
 
 <progress-bar></progress-bar>
 
 <section>
-  <weather-city></weather-city>
+  <weather-city [city]="currentCityWeather | async"></weather-city>
 </section>
 
-<section>
-  <weather-city class="inline"></weather-city>
-  <weather-city class="inline"></weather-city>
-  <weather-city class="inline"></weather-city>
+<section *ngFor="let weather of forecastCityWeather?.list">
+  <weather-city [city]="weather"></weather-city>
 </section>
 
