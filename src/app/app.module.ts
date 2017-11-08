@@ -15,6 +15,7 @@ import { AutocompleteCitiesComponent } from './autocomplete-cities/autocomplete-
 import { WeatherCityComponent } from './weather-city/weather-city.component';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
 import { ProgressBarService } from './progressbar/progressbar.service';
+import { CitiesService } from './cities/cities.service';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { ProgressBarService } from './progressbar/progressbar.service';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [ProgressBarService],
+  providers: [ProgressBarService, CitiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

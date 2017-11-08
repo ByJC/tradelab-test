@@ -1,12 +1,16 @@
-import {Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
+
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
-import { cities } from './cities-fr';
+import 'rxjs/add/observable/forkJoin';
+
+import { cities } from '../cities/cities-fr';
 import { ProgressBarService } from '../progressbar/progressbar.service';
-import {Http} from '@angular/http';
+import { CitiesService } from '../cities/cities.service';
 
 
 @Component({
@@ -22,12 +26,12 @@ export class AutocompleteCitiesComponent {
 
   filteredOptions: Observable<any[]>;
 
-  constructor(private pbService: ProgressBarService, public http: Http) {}
+  constructor(private pbService: ProgressBarService, public http: Http, private cService : CitiesService) {}
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
       .startWith(null)
-      .debounceTime(500)
+      .debounceTime(200)
       .map(val => val ? this.filter(val) : this.cities.slice());
   }
 
@@ -36,12 +40,16 @@ export class AutocompleteCitiesComponent {
   }
 
   submit() {
-    console.log(this.myControl.value);
-    this.http.get('http://api.openweathermap.org/data/2.5/weather?q=London&APPID=baae20ca430564fec195985afb9eb4e1')
-      .map(res => {
-        console.log(res);
-      })
-      .subscribe();
+    this.pbService.show();
+    Observable.forkJoin([
+        this.cService.getCurrent(this.myControl.value),
+        this.cService.getForecast(this.myControl.value),
+    ])
+    .subscribe(([current,forecast]) => {
+      console.log(current);
+      console.log(forecast);
+      this.pbService.hide();
+    });
 
   }
 

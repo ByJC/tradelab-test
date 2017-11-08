@@ -5,7 +5,7 @@ import 'rxjs/add/operator/do';
 
 @Injectable() 
 export class ProgressBarService {
-  subject = new BehaviorSubject<any>(true);
+  subject = new BehaviorSubject<any>(false);
   changes = this.subject
               .asObservable()
               .do(changes => console.log('new state', changes)); 
