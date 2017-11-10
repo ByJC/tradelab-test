@@ -1,10 +1,10 @@
 <mat-toolbar>
-    {{city?.name}} - {{city?.dt * 1000 | date:'fullDate'}}
-  </mat-toolbar>
+  <strong>{{city?.name}} - </strong> <span> {{city?.dt * 1000 | date:'EEEE, MMMM d, y, h:mm a'}}</span>
+</mat-toolbar>
 <mat-card>
+  <p>Humidity : {{city?.main.humidity}}</p>
   <mat-card-content *ngFor="let weather of city?.weather">
-    <p>{{weather.main}} - <i class="wi wi-icon-{{weather.id}}"></i></p>
-    <p>{{weather.description}}</p>
-    <p>{{weather.icon}}</p>
+    <p><strong>{{weather.main}} - </strong><i class="wi wi-icon-{{weather.id}}"></i> - {{weather.description}}</p>
+    <p>Temp : {{city.main.temp - 273.15 | number}} °C</p>
   </mat-card-content>
 </mat-card>

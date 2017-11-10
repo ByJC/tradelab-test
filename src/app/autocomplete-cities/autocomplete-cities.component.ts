@@ -30,7 +30,7 @@ export class AutocompleteCitiesComponent {
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges
-      .startWith(this.cities[0])
+      .startWith(this.cities[0].nm)
       .debounceTime(200)
       .map(val => val ? this.filter(val) : this.cities.slice());
 
@@ -45,8 +45,8 @@ export class AutocompleteCitiesComponent {
     const citySend = city ? city : this.myControl.value;
     this.pbService.show();
     Observable.forkJoin([
-        this.cService.getCurrent(citySend),
-        this.cService.getForecast(citySend),
+        this.cService.getCurrentWeather(citySend),
+        this.cService.getForecastWeather(citySend),
     ])
     .subscribe(([current,forecast]) => {
       this.pbService.hide();

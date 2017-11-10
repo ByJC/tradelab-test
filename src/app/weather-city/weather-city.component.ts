@@ -5,12 +5,8 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './weather-city.component.html',
   styleUrls: ['./weather-city.component.scss']
 })
-export class WeatherCityComponent implements OnInit {
+export class WeatherCityComponent {
   @Input() city: any;
   
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

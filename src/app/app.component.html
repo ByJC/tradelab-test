@@ -10,7 +10,9 @@
   <weather-city [city]="currentCityWeather | async"></weather-city>
 </section>
 
-<section *ngFor="let weather of forecastCityWeather?.list">
-  <weather-city [city]="weather"></weather-city>
+<section>
+  <div class="inline" *ngFor="let weather of forecastCityWeather?.list">
+    <weather-city [city]="weather"></weather-city>
+  </div>
 </section>
 

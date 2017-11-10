@@ -23,12 +23,12 @@ export class CitiesService {
       this.subjectForecastWeather.next(forecastWeather);
     }
 
-    getCurrent(city) {
+    getCurrentWeather(city) {
         return this.http
                 .get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=baae20ca430564fec195985afb9eb4e1`)
                 .map(res => res.json());
     }
-    getForecast(city) {
+    getForecastWeather(city) {
         return this.http
                 .get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=baae20ca430564fec195985afb9eb4e1`)
                 .map(res => res.json());
