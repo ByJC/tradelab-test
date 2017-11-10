@@ -25,12 +25,12 @@ export class CitiesService {
 
     getCurrentWeather(city) {
         return this.http
-                .get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=baae20ca430564fec195985afb9eb4e1`)
+                .get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=baae20ca430564fec195985afb9eb4e1`)
                 .map(res => res.json());
     }
     getForecastWeather(city) {
         return this.http
-                .get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=baae20ca430564fec195985afb9eb4e1`)
+                .get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=baae20ca430564fec195985afb9eb4e1`)
                 .map(res => res.json());
     }
 }
